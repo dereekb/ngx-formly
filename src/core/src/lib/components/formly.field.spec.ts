@@ -73,7 +73,7 @@ describe('FormlyField Component', () => {
 
     const fixture = TestBed.createComponent(FormlyOnPushComponent);
     const detectChanges = () => fixture.detectChanges();
-    expect(detectChanges).not.toThrowError();
+    expect(detectChanges).not.toThrow();
   });
 
   describe('host attrs', () => {
@@ -142,11 +142,11 @@ describe('FormlyField Component', () => {
   it('should call field hooks if set', () => {
     const f: FormlyFieldConfig = {
       hooks: {
-        afterContentInit: () => {},
-        afterViewInit: () => {},
-        onInit: () => {},
-        onChanges: () => {},
-        onDestroy: () => {},
+        afterContentInit: () => { },
+        afterViewInit: () => { },
+        onInit: () => { },
+        onChanges: () => { },
+        onDestroy: () => { },
       },
     };
 
@@ -216,7 +216,7 @@ describe('FormlyField Component', () => {
 
   it('should not throw error when field is null', () => {
     const render = () => renderComponent(null);
-    expect(render).not.toThrowError();
+    expect(render).not.toThrow();
   });
 
   it('should render field component with async wrapper', () => {
@@ -635,7 +635,7 @@ describe('FormlyField Component', () => {
     </div>
   `,
 })
-class FormlyWrapperFormFieldAsync extends FieldWrapper {}
+class FormlyWrapperFormFieldAsync extends FieldWrapper { }
 
 @Component({
   standalone: false,
@@ -646,7 +646,7 @@ class FormlyWrapperFormFieldAsync extends FieldWrapper {}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyOnPushComponent extends FieldType {}
+export class FormlyOnPushComponent extends FieldType { }
 
 @Component({
   standalone: false,
@@ -664,7 +664,7 @@ export class FormlyOnPopulateType extends FieldType implements FormlyExtension {
 }
 
 @Injectable()
-export class ParentService {}
+export class ParentService { }
 
 @Component({
   standalone: false,
@@ -696,4 +696,4 @@ export class FormlyChildComponent extends FieldType {
   standalone: false,
   template: `<input type="text" [formControl]="formControl.get('title')" />`,
 })
-export class FormlyGroupLocalControlType extends FieldType {}
+export class FormlyGroupLocalControlType extends FieldType { }

@@ -14,7 +14,7 @@ describe('FormlyFormBuilder service', () => {
     const builder = createBuilder({});
 
     const build = () => builder.build({});
-    expect(build).toThrowError(/missing `forRoot\(\)` call/i);
+    expect(build).toThrow(/missing `forRoot\(\)` call/i);
   });
 
   it('should assign builder props to field options', () => {
@@ -138,7 +138,7 @@ describe('FormlyFormBuilder service', () => {
   });
 
   it('should build nested field', () => {
-    const extension = { onPopulate: () => {} };
+    const extension = { onPopulate: () => { } };
     jest.spyOn(extension, 'onPopulate');
 
     const builder = createBuilder({

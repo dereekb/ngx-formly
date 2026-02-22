@@ -5,12 +5,14 @@ import { FormlyFieldInput } from '@ngx-formly/core/testing';
 import { FieldType, FieldWrapper } from '../core';
 
 @Component({
-  standalone: false, selector: 'formly-test-cmp', template: '' })
-class FieldTypeComponent extends FieldType {}
+  standalone: false, selector: 'formly-test-cmp', template: ''
+})
+class FieldTypeComponent extends FieldType { }
 
 @Component({
-  standalone: false, selector: 'formly-test-cmp', template: '' })
-class FieldWrapperComponent extends FieldWrapper {}
+  standalone: false, selector: 'formly-test-cmp', template: ''
+})
+class FieldWrapperComponent extends FieldWrapper { }
 
 describe('FormlyConfig service', () => {
   let config: FormlyConfig;
@@ -70,7 +72,7 @@ describe('FormlyConfig service', () => {
 
     it('should throw when wrapper not found', () => {
       const config = new FormlyConfig();
-      expect(() => config.getWrapper('custom_wrapper')).toThrowError(
+      expect(() => config.getWrapper('custom_wrapper')).toThrow(
         '[Formly Error] The wrapper "custom_wrapper" could not be found. Please make sure that is registered through the FormlyModule declaration.',
       );
     });
@@ -97,7 +99,7 @@ describe('FormlyConfig service', () => {
 
     it('should throw when type not found', () => {
       const config = new FormlyConfig();
-      expect(() => config.getType('custom_input', true)).toThrowError(
+      expect(() => config.getType('custom_input', true)).toThrow(
         '[Formly Error] The type "custom_input" could not be found. Please make sure that is registered through the FormlyModule declaration.',
       );
     });
@@ -156,7 +158,7 @@ describe('FormlyConfig service', () => {
 
     it('should throw when validator not found', () => {
       const config = new FormlyConfig();
-      expect(() => config.getValidator('custom_validator')).toThrowError(
+      expect(() => config.getValidator('custom_validator')).toThrow(
         '[Formly Error] The validator "custom_validator" could not be found. Please make sure that is registered through the FormlyModule declaration.',
       );
     });

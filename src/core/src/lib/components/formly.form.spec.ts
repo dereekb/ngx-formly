@@ -27,7 +27,7 @@ export const renderComponent = (inputs: IFormlyFormInputs, config: any = {}) => 
     model: {},
     options: {},
     fields: [],
-    modelChange: () => { },
+    modelChange: () => {},
     ...inputs,
   };
 
@@ -918,11 +918,11 @@ export class StandaloneChildComponent {
   imports: [StandaloneChildComponent],
   standalone: true,
 })
-export class StandaloneAppComponent { }
+export class StandaloneAppComponent {}
 
 @Component({
   selector: 'formly-type-input',
   template: ` <input type="text" [formControl]="formControl" [formlyAttributes]="field" /> `,
   standalone: true,
 })
-export class FormlyFieldInput extends FieldType<FieldTypeConfig> { }
+export class FormlyFieldInput extends FieldType<FieldTypeConfig> {}

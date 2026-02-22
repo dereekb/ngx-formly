@@ -5,7 +5,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
   // eslint-disable-next-line
   selector: 'input[type=file]',
   host: {
-    '(change)': 'onChange($event.target.files)',
+    '(change)': 'onChange($event)',
     '(blur)': 'onTouched()',
   },
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: FileValueAccessor, multi: true }],
@@ -14,7 +14,9 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 // https://github.com/angular/angular/issues/7341
 export class FileValueAccessor implements ControlValueAccessor {
   value: any;
-  onChange = (_: any) => {};
+  onChange = (event: Event) => {
+    const type = (event.target as HTMLInputElement).files;
+  };
   onTouched = () => {};
 
   writeValue(_value: any) {}

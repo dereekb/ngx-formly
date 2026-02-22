@@ -1,0 +1,4 @@
+{
+  "module": "../fesm2022/ngx-formly-bootstrap-input.mjs",
+  "typings": "../types/ngx-formly-bootstrap-input.d.ts"
+}

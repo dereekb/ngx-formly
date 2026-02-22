@@ -1,0 +1,4 @@
+{
+  "module": "../fesm2022/ngx-formly-material-datepicker.mjs",
+  "typings": "../types/ngx-formly-material-datepicker.d.ts"
+}

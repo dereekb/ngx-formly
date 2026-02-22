@@ -1,0 +1,4 @@
+{
+  "module": "../fesm2022/ngx-formly-core-testing.mjs",
+  "typings": "../types/ngx-formly-core-testing.d.ts"
+}

@@ -1,0 +1,4 @@
+{
+  "module": "../fesm2022/ngx-formly-core-select.mjs",
+  "typings": "../types/ngx-formly-core-select.d.ts"
+}

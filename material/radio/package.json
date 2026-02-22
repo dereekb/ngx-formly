@@ -1,0 +1,4 @@
+{
+  "module": "../fesm2022/ngx-formly-material-radio.mjs",
+  "typings": "../types/ngx-formly-material-radio.d.ts"
+}

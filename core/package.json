@@ -1,0 +1,49 @@
+{
+  "name": "@ngx-formly/core",
+  "version": "7.1.0",
+  "license": "MIT",
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@angular/forms": ">=13.2.0",
+    "rxjs": "^6.5.3 || ^7.0.0"
+  },
+  "module": "fesm2022/ngx-formly-core.mjs",
+  "typings": "types/ngx-formly-core.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./types/ngx-formly-core.d.ts",
+      "default": "./fesm2022/ngx-formly-core.mjs"
+    },
+    "./json-schema": {
+      "types": "./types/ngx-formly-core-json-schema.d.ts",
+      "default": "./fesm2022/ngx-formly-core-json-schema.mjs"
+    },
+    "./preset": {
+      "types": "./types/ngx-formly-core-preset.d.ts",
+      "default": "./fesm2022/ngx-formly-core-preset.mjs"
+    },
+    "./select": {
+      "types": "./types/ngx-formly-core-select.d.ts",
+      "default": "./fesm2022/ngx-formly-core-select.mjs"
+    },
+    "./testing": {
+      "types": "./types/ngx-formly-core-testing.d.ts",
+      "default": "./fesm2022/ngx-formly-core-testing.mjs"
+    }
+  },
+  "sideEffects": false,
+  "homepage": "https://github.com/ngx-formly/ngx-formly#readme",
+  "description": "Formly is a dynamic (JSON powered) form library for Angular that bring unmatched maintainability to your application's forms.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngx-formly/ngx-formly.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ngx-formly/ngx-formly/issues"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "module": "../fesm2022/ngx-formly-material-slider.mjs",
+  "typings": "../types/ngx-formly-material-slider.d.ts"
+}

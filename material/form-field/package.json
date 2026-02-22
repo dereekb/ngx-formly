@@ -1,0 +1,4 @@
+{
+  "module": "../fesm2022/ngx-formly-material-form-field.mjs",
+  "typings": "../types/ngx-formly-material-form-field.d.ts"
+}

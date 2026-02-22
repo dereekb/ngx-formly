@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Location, NgIf, NgTemplateOutlet, NgFor, AsyncPipe } from '@angular/common';
+import { Location, NgTemplateOutlet, AsyncPipe } from '@angular/common';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { filter, map, takeUntil } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
@@ -20,7 +20,6 @@ import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
   styleUrls: ['./app.component.scss'],
   standalone: true,
   imports: [
-    NgIf,
     NgxLoadingBar,
     MatToolbar,
     MatAnchor,
@@ -29,15 +28,14 @@ import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
     NgTemplateOutlet,
     MatButton,
     MatIcon,
-    NgFor,
     MatSidenavContainer,
     MatSidenav,
     RouterOutlet,
     MatMenuTrigger,
     MatMenu,
     MatMenuItem,
-    AsyncPipe,
-  ],
+    AsyncPipe
+],
 })
 export class AppComponent implements OnInit, OnDestroy {
   private destroy$: Subject<any> = new Subject<any>();

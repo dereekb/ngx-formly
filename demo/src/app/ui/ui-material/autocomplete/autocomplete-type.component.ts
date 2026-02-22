@@ -6,7 +6,7 @@ import { startWith, switchMap } from 'rxjs/operators';
 import { MatInput } from '@angular/material/input';
 import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgFor, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatOption } from '@angular/material/core';
 
 @Component({
@@ -19,13 +19,15 @@ import { MatOption } from '@angular/material/core';
       [formlyAttributes]="field"
       [placeholder]="props.placeholder"
       [errorStateMatcher]="errorStateMatcher"
-    />
+      />
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let value of filter | async" [value]="value">
-        {{ value }}
-      </mat-option>
+      @for (value of filter | async; track value) {
+        <mat-option [value]="value">
+          {{ value }}
+        </mat-option>
+      }
     </mat-autocomplete>
-  `,
+    `,
   standalone: true,
   imports: [
     MatInput,
@@ -33,10 +35,9 @@ import { MatOption } from '@angular/material/core';
     ReactiveFormsModule,
     FormlyAttributes,
     MatAutocomplete,
-    NgFor,
     MatOption,
-    AsyncPipe,
-  ],
+    AsyncPipe
+],
 })
 export class AutocompleteTypeComponent extends FieldType<FieldTypeConfig> implements OnInit {
   filter: Observable<any>;

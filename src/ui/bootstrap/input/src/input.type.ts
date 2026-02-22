@@ -13,17 +13,17 @@ export interface FormlyInputFieldConfig extends FormlyFieldConfig<InputProps> {
   selector: 'formly-field-input',
   template: `
     <ng-template #fieldTypeTemplate>
-      <input
-        *ngIf="type !== 'number'; else numberTmp"
-        [type]="type"
-        [formControl]="formControl"
-        class="form-control"
-        [formlyAttributes]="field"
-        [class.is-invalid]="showError"
-        [attr.aria-describedby]="id + '-formly-validation-error'"
-        [attr.aria-invalid]="showError"
-      />
-      <ng-template #numberTmp>
+      @if (type !== 'number') {
+        <input
+          [type]="type"
+          [formControl]="formControl"
+          class="form-control"
+          [formlyAttributes]="field"
+          [class.is-invalid]="showError"
+          [attr.aria-describedby]="id + '-formly-validation-error'"
+          [attr.aria-invalid]="showError"
+          />
+      } @else {
         <input
           type="number"
           [formControl]="formControl"
@@ -32,10 +32,10 @@ export interface FormlyInputFieldConfig extends FormlyFieldConfig<InputProps> {
           [class.is-invalid]="showError"
           [attr.aria-describedby]="id + '-formly-validation-error'"
           [attr.aria-invalid]="showError"
-        />
-      </ng-template>
+          />
+      }
     </ng-template>
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyFieldInput extends FieldType<FieldTypeConfig<InputProps>> {

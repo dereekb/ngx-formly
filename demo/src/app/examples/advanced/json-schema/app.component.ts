@@ -6,14 +6,14 @@ import { HttpClient } from '@angular/common/http';
 import { tap, takeUntil } from 'rxjs/operators';
 
 import { Subject } from 'rxjs';
-import { NgFor, NgIf } from '@angular/common';
+
 import { FormlyForm } from '@ngx-formly/core';
 
 @Component({
   selector: 'formly-app-example',
   templateUrl: './app.component.html',
   standalone: true,
-  imports: [NgFor, NgIf, ReactiveFormsModule, FormlyForm],
+  imports: [ReactiveFormsModule, FormlyForm],
 })
 export class AppComponent implements OnDestroy {
   private destroy$: Subject<any> = new Subject<any>();

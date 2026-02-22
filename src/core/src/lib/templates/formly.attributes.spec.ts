@@ -1,7 +1,10 @@
-import { fakeAsync, tick } from '@angular/core/testing';
 import { FormControl } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { createComponent, ɵCustomEvent } from '@ngx-formly/core/testing';
+
+export function tickAsync(delayMs = 0): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, delayMs));
+}
 
 const renderComponent = (field: FormlyFieldConfig, { template }: { template?: string } = {}) => {
   return createComponent<{ field: FormlyFieldConfig }>({
@@ -181,18 +184,18 @@ describe('FormlyAttributes Component', () => {
   });
 
   describe('focus the element', () => {
-    it(`should focus the element when focus is set to "true" and then blurred when it's set to "false"`, fakeAsync(() => {
+    it(`should focus the element when focus is set to "true" and then blurred when it's set to "false"`, async () => {
       const { detectChanges, query, field } = renderComponent({ focus: true });
       const inputEl = <HTMLInputElement>query('input').nativeElement;
 
-      tick();
+      await tickAsync();
       expect(document.activeElement === inputEl).toBeTrue();
 
       field.focus = false;
-      tick();
+      await tickAsync();
       detectChanges();
       expect(document.activeElement === inputEl).toBeFalse();
-    }));
+    });
 
     it('should change field focus when the element is focused or blurred', () => {
       const { query, field } = renderComponent({ focus: false });
@@ -231,7 +234,7 @@ describe('FormlyAttributes Component', () => {
       expect(query('input').attributes.id).toEqual('foo');
     });
 
-    it(`should focus the first element when mutliple formlyAttributes is present`, fakeAsync(() => {
+    it(`should focus the first element when mutliple formlyAttributes is present`, async () => {
       const { detectChanges, field, query } = renderComponent(
         { focus: true },
         {
@@ -244,9 +247,9 @@ describe('FormlyAttributes Component', () => {
       );
 
       field.focus = true;
-      tick();
+      await tickAsync();
       detectChanges();
       expect(document.activeElement === query('input').nativeElement).toBeTrue();
-    }));
+    });
   });
 });

@@ -18,7 +18,6 @@ export const dependencies: { [id: string]: { [id: string]: string } } = {
     '@angular/animations': angularVersion,
     '@angular/router': angularVersion,
     rxjs: '^7.8.0',
-    'zone.js': '~0.15.0',
     tslib: '^2.3.1',
     '@ngx-formly/core': formlyVersion,
   },

@@ -1,4 +1,3 @@
-import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormlyInputModule, createComponent, ɵCustomEvent } from '@ngx-formly/core/testing';
 import {
   FieldType,
@@ -12,6 +11,11 @@ import {
 import { FormGroup, FormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyOnPushComponent } from './formly.field.spec';
 import { Component } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+
+export function tickAsync(delayMs = 0): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, delayMs));
+}
 
 type IFormlyFormInputs = Partial<{
   form: FormGroup | FormArray;
@@ -27,7 +31,7 @@ export const renderComponent = (inputs: IFormlyFormInputs, config: any = {}) => 
     model: {},
     options: {},
     fields: [],
-    modelChange: () => { },
+    modelChange: () => {},
     ...inputs,
   };
 
@@ -320,7 +324,7 @@ describe('FormlyForm Component', () => {
       expect(barControl).not.toBeNull();
     });
 
-    it('should detect changes before emitting `modelChange`', fakeAsync(() => {
+    it('should detect changes before emitting `modelChange`', async () => {
       const { fields } = renderComponent({
         fields: [
           {
@@ -336,9 +340,9 @@ describe('FormlyForm Component', () => {
         ],
       });
 
-      tick();
+      await tickAsync();
       expect(fields[0].hide).toBeTrue();
-    }));
+    });
 
     it('should reset field before eval expressions', () => {
       const { form, model, fields } = renderComponent(
@@ -918,11 +922,11 @@ export class StandaloneChildComponent {
   imports: [StandaloneChildComponent],
   standalone: true,
 })
-export class StandaloneAppComponent { }
+export class StandaloneAppComponent {}
 
 @Component({
   selector: 'formly-type-input',
   template: ` <input type="text" [formControl]="formControl" [formlyAttributes]="field" /> `,
   standalone: true,
 })
-export class FormlyFieldInput extends FieldType<FieldTypeConfig> { }
+export class FormlyFieldInput extends FieldType<FieldTypeConfig> {}

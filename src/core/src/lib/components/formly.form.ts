@@ -8,19 +8,20 @@ import {
   EventEmitter,
   Output,
   OnDestroy,
-  NgZone,
   ContentChildren,
   QueryList,
+  afterNextRender,
+  Injector,
 } from '@angular/core';
 import { UntypedFormGroup, UntypedFormArray } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions, FormlyFieldConfigCache } from '../models';
 import { FormlyFormBuilder } from '../services/formly.builder';
 import { FormlyConfig } from '../services/formly.config';
-import { clone, hasKey, isNoopNgZone, isSignalRequired, observeDeep } from '../utils';
-import { switchMap, filter, take } from 'rxjs/operators';
+import { clone, hasKey, isSignalRequired, observeDeep } from '../utils';
+import { switchMap, filter } from 'rxjs/operators';
 import { clearControl } from '../extensions/field-form/utils';
 import { FormlyFieldTemplates, FormlyTemplate, LegacyFormlyTemplate } from './formly.template';
-import { of, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { FormlyField } from './formly.field';
 
 /**
@@ -90,8 +91,8 @@ export class FormlyForm implements DoCheck, OnChanges, OnDestroy {
   constructor(
     private builder: FormlyFormBuilder,
     private config: FormlyConfig,
-    private ngZone: NgZone,
     protected fieldTemplates: FormlyFieldTemplates,
+    private injector: Injector,
   ) {}
 
   ngDoCheck() {
@@ -141,16 +142,24 @@ export class FormlyForm implements DoCheck, OnChanges, OnDestroy {
     const valueChanges = this.field.options.fieldChanges
       .pipe(
         filter(({ field, type }) => hasKey(field) && type === 'valueChanges'),
-        switchMap(() => (isNoopNgZone(this.ngZone) ? of(null) : this.ngZone.onStable.asObservable().pipe(take(1)))),
-      )
-      .subscribe(() =>
-        this.ngZone.runGuarded(() => {
-          // runGuarded is used to keep in sync the expression changes
-          // https://github.com/ngx-formly/ngx-formly/issues/2095
-          this.checkExpressionChange();
-          this.modelChange.emit((this._modelChangeValue = clone(this.model)));
+        switchMap(() => {
+          // Use afterNextRender to wait for the next render cycle
+          // This ensures change detection completes before checking expressions
+          return new Observable((observer) => {
+            afterNextRender(
+              () => {
+                observer.next();
+                observer.complete();
+              },
+              { injector: this.injector },
+            );
+          });
         }),
-      );
+      )
+      .subscribe(() => {
+        this.checkExpressionChange();
+        this.modelChange.emit((this._modelChangeValue = clone(this.model)));
+      });
 
     return () => {
       fieldChangesDetection.forEach((fnc) => fnc());

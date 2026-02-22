@@ -10,6 +10,13 @@ function setInputs<T>(fixture: ComponentFixture<T>, inputs: T, detectChanges = t
   });
 
   if (detectChanges !== false) {
+    /**
+     * In zoneless we have to mark the test component for checks since it may not be using signals to detect the changes.
+     *
+     * @see https://angular.dev/guide/zoneless#using-zoneless-in-testbed
+     */
+    fixture.changeDetectorRef.markForCheck();
+
     fixture.detectChanges();
   }
 }

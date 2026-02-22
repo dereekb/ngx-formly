@@ -9,11 +9,15 @@ import {
   FormlyFieldInput,
   FormlyWrapperFormField,
 } from '@ngx-formly/core/testing';
-import { tick, fakeAsync, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { tap, map, shareReplay } from 'rxjs/operators';
 import { FormlyExtension, FormlyFieldConfigCache } from '../models';
 import { BehaviorSubject, timer } from 'rxjs';
 import { FieldType } from '../templates/field.type';
+
+export function tickAsync(delayMs = 0): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, delayMs));
+}
 
 const renderComponent = (field: FormlyFieldConfig, opts: any = {}) => {
   const { config, ...options } = opts;
@@ -385,7 +389,7 @@ describe('FormlyField Component', () => {
     expect(field.props.label).toEqual('test');
   });
 
-  it('should detect observable expressions changes', fakeAsync(() => {
+  it('should detect observable expressions changes', async () => {
     const timer$ = timer(100);
     const { query, detectChanges } = renderComponent({
       type: 'on-push',
@@ -394,10 +398,10 @@ describe('FormlyField Component', () => {
       },
     });
 
-    tick(150);
+    await tickAsync(150);
     detectChanges();
     expect(query('.props').nativeElement.textContent).toContain('ticker');
-  }));
+  });
 
   it('should update template options of OnPush FieldType #2191', async () => {
     const { field, query } = renderComponent({ type: 'on-populate' });
@@ -440,7 +444,7 @@ describe('FormlyField Component', () => {
       subscription.unsubscribe();
     });
 
-    it('should apply debounce to the emitted valueChanges', fakeAsync(() => {
+    it('should apply debounce to the emitted valueChanges', async () => {
       const { field } = renderComponent({
         key: 'foo',
         type: 'input',
@@ -454,10 +458,10 @@ describe('FormlyField Component', () => {
       field.formControl.setValue('15');
 
       expect(spy).not.toHaveBeenCalled();
-      tick(6);
+      await tickAsync(6);
       expect(spy).toHaveBeenCalled();
       subscription.unsubscribe();
-    }));
+    });
 
     it('should ignore default debounce when using "blur" or "submit"', () => {
       const { field } = renderComponent({
@@ -635,7 +639,7 @@ describe('FormlyField Component', () => {
         <ng-container #fieldComponent></ng-container>
       </div>
     }
-    `,
+  `,
 })
 class FormlyWrapperFormFieldAsync extends FieldWrapper { }
 
@@ -671,7 +675,11 @@ export class ParentService { }
 @Component({
   standalone: false,
   selector: 'formly-parent',
-  template: ` @for (f of field.fieldGroup; track f) {<formly-field [field]="f"></formly-field>} `,
+  template: `
+    @for (f of field.fieldGroup; track f) {
+      <formly-field [field]="f"></formly-field>
+    }
+  `,
   providers: [ParentService],
 })
 export class FormlyParentComponent extends FieldType {

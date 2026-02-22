@@ -61,7 +61,8 @@ module.exports = [
                             "argsIgnorePattern": "^_",
                             "varsIgnorePattern": "^_"
                         }
-                    ]
+                    ],
+                    "@angular-eslint/prefer-standalone": ["off"]    // Messes with the standalone: false components
                 }
             },
             {

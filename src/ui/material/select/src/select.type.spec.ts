@@ -1,8 +1,6 @@
-import { fakeAsync, tick } from '@angular/core/testing';
 import { createFieldComponent } from '@ngx-formly/core/testing';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { of } from 'rxjs';
-import { timeout } from 'rxjs/operators';
 import { FormlyMatSelectModule } from '@ngx-formly/material/select';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 

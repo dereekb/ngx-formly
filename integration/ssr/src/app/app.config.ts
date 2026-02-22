@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -7,11 +7,5 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideFormlyCore } from '@ngx-formly/core';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideAnimations(),
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
-    provideClientHydration(),
-    provideFormlyCore(),
-  ],
+  providers: [provideAnimations(), provideRouter(routes), provideClientHydration(), provideFormlyCore()],
 };

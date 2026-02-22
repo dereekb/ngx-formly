@@ -86,6 +86,7 @@ export class FormlyValidationMessage implements OnChanges {
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-validation-message',
   template: '{{ errorMessage$ | async }}',
   changeDetection: ChangeDetectionStrategy.OnPush,

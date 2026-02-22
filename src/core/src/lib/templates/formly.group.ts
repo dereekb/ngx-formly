@@ -3,6 +3,7 @@ import { FieldType, FieldGroupTypeConfig } from './field.type';
 
 /** @ignore */
 @Component({
+  standalone: false,
   selector: 'formly-group',
   template: `
     @for (f of field.fieldGroup; track $index) {

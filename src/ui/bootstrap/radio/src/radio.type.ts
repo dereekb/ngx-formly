@@ -12,6 +12,7 @@ export interface FormlyRadioFieldConfig extends FormlyFieldConfig<RadioProps> {
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-field-radio',
   template: `
     <ng-template #fieldTypeTemplate>

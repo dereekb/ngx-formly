@@ -14,16 +14,25 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "importHelpers": true,
     "target": "ES2022",
     "module": "es2020",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "paths": {
-      "@ngx-formly/*": ["src/*/src/private_api", "src/*/src/public_api", "src/ui/*/src/public_api"],
-      "@assets/*": ["demo/src/assets/*"]
+      "@ngx-formly/*": [
+        "src/*/src/private_api",
+        "src/*/src/public_api",
+        "src/ui/*/src/public_api"
+      ],
+      "@assets/*": [
+        "demo/src/assets/*"
+      ]
     },
     "skipLibCheck": true,
     "useDefineForClassFields": false

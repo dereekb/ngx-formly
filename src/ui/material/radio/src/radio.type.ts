@@ -12,6 +12,7 @@ export interface FormlyRadioFieldConfig extends FormlyFieldConfig<RadioProps> {
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-field-mat-radio',
   template: `
     <mat-radio-group

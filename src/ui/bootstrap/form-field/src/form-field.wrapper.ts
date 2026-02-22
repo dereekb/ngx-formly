@@ -8,6 +8,7 @@ export interface FormlyFieldProps extends CoreFormlyFieldProps {
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-wrapper-form-field',
   template: `
     <ng-template #labelTemplate>

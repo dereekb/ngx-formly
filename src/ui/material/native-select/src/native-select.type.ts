@@ -10,6 +10,7 @@ export interface FormlyNativeSelectFieldConfig extends FormlyFieldConfig<NativeS
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-field-mat-native-select',
   template: `
     <select

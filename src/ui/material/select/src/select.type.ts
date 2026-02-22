@@ -18,6 +18,7 @@ export interface FormlySelectFieldConfig extends FormlyFieldConfig<SelectProps> 
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-field-mat-select',
   template: `
     <ng-template #selectAll let-selectOptions="selectOptions">

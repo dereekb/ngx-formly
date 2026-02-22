@@ -602,6 +602,7 @@ describe('Array Field Type', () => {
 });
 
 @Component({
+  standalone: false,
   selector: 'formly-array',
   template: `
     <ng-container *ngFor="let field of field.fieldGroup; let i = index">

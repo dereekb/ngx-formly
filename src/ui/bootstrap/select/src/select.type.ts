@@ -13,6 +13,7 @@ export interface FormlySelectFieldConfig extends FormlyFieldConfig<SelectProps> 
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-field-select',
   template: `
     <ng-template #fieldTypeTemplate>

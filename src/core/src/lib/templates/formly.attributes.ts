@@ -226,6 +226,7 @@ export class FormlyAttributes implements OnChanges, DoCheck, OnDestroy {
 }
 
 @Directive({
+  standalone: false,
   selector: '[formlyAttributes]',
   host: {
     '(change)': 'onHostChange($event)',

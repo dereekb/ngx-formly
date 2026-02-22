@@ -16,6 +16,7 @@ interface AddonsProps extends FormlyFieldProps {
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-wrapper-addons',
   templateUrl: './addons.component.html',
   styleUrls: ['./addons.component.scss'],

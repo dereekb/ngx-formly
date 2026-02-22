@@ -9,12 +9,12 @@ import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
 import { findModuleFromOptions as internalFindModule } from '@schematics/angular/utility/find-module';
 import { WorkspaceProject } from '@schematics/angular/utility/workspace-models';
 import { getWorkspace } from '@schematics/angular/utility/workspace';
-import {Schema as ComponentOptions} from '@schematics/angular/component/schema';
-import {Path} from '@angular-devkit/core';
-import {JsonValue} from '@angular-devkit/core';
-import {ProjectDefinition} from '@angular-devkit/core/src/workspace';
-import {addImportToModule} from '@schematics/angular/utility/ast-utils';
-import {InsertChange} from '@schematics/angular/utility/change';
+import { Schema as ComponentOptions } from '@schematics/angular/component/schema';
+import { Path } from '@angular-devkit/core';
+import { JsonValue } from '@angular-devkit/core';
+import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
+import { addImportToModule } from '@schematics/angular/utility/ast-utils';
+import { InsertChange } from '@schematics/angular/utility/change';
 
 // https://github.com/angular/components/blob/main/src/cdk/schematics/utils/ast.ts#L30
 export function addModuleImportToModule(
@@ -29,7 +29,7 @@ export function addModuleImportToModule(
     throw new SchematicsException(`Module not found: ${modulePath}`);
   }
 
-  const changes = addImportToModule(moduleSource, modulePath, moduleName, src);
+  const changes = addImportToModule(moduleSource as any, modulePath, moduleName, src);
   const recorder = host.beginUpdate(modulePath);
 
   changes.forEach(change => {
@@ -117,7 +117,7 @@ export function getProjectMainFile(project: ProjectDefinition): Path {
   if (!buildOptions.main) {
     throw new SchematicsException(
       `Could not find the project main file inside of the ` +
-        `workspace config (${project.sourceRoot})`,
+      `workspace config (${project.sourceRoot})`,
     );
   }
 

@@ -41,6 +41,7 @@ export interface FormlyDatepickerFieldConfig extends FormlyFieldConfig<Datepicke
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-field-mat-datepicker',
   template: `
     <input

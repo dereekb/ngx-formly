@@ -2202,6 +2202,7 @@ describe('Service: FormlyJsonschema', () => {
 });
 
 @Component({
+  standalone: false,
   selector: 'formly-array-type',
   template: `
     <div *ngFor="let field of field.fieldGroup; let i = index">

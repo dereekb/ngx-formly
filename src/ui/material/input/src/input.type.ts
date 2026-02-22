@@ -9,6 +9,7 @@ export interface FormlyInputFieldConfig extends FormlyFieldConfig<InputProps> {
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-field-mat-input',
   template: `
     @if (type !== 'number') {

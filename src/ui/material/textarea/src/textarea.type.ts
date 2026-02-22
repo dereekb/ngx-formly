@@ -14,6 +14,7 @@ export interface FormlyTextAreaFieldConfig extends FormlyFieldConfig<TextAreaPro
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-field-mat-textarea',
   template: `
     <textarea

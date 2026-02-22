@@ -12,6 +12,7 @@ export interface FormlyCheckboxFieldConfig extends FormlyFieldConfig<CheckboxPro
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-field-checkbox',
   template: `
     <ng-template #fieldTypeTemplate>

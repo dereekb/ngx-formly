@@ -41,6 +41,7 @@ export interface FormlyFieldProps extends CoreFormlyFieldProps {
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-wrapper-mat-form-field',
   template: `
     <!-- fix https://github.com/angular/material2/pull/7083 by setting width to 100% -->

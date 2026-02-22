@@ -12,6 +12,7 @@ export interface FormlyTextAreaFieldConfig extends FormlyFieldConfig<TextAreaPro
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-field-textarea',
   template: `
     <ng-template #fieldTypeTemplate>

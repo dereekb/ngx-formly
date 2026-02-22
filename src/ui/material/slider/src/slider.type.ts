@@ -16,6 +16,7 @@ export interface FormlySliderFieldConfig extends FormlyFieldConfig<SliderProps> 
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-field-mat-slider',
   template: `
     <mat-slider

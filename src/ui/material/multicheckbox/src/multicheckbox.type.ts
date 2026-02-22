@@ -12,6 +12,7 @@ export interface FormlyMultiCheckboxFieldConfig extends FormlyFieldConfig<MultiC
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-field-mat-multicheckbox',
   template: `
     @for (option of props.options | formlySelectOptions: field | async; track $index; let i = $index) {

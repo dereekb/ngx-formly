@@ -4,10 +4,12 @@ import { Component } from '@angular/core';
 import { FormlyFieldInput } from '@ngx-formly/core/testing';
 import { FieldType, FieldWrapper } from '../core';
 
-@Component({ selector: 'formly-test-cmp', template: '' })
+@Component({
+  standalone: false, selector: 'formly-test-cmp', template: '' })
 class FieldTypeComponent extends FieldType {}
 
-@Component({ selector: 'formly-test-cmp', template: '' })
+@Component({
+  standalone: false, selector: 'formly-test-cmp', template: '' })
 class FieldWrapperComponent extends FieldWrapper {}
 
 describe('FormlyConfig service', () => {

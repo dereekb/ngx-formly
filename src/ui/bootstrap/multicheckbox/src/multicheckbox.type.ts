@@ -11,6 +11,7 @@ export interface FormlyMultiCheckboxFieldConfig extends FormlyFieldConfig<MultiC
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-field-multicheckbox',
   template: `
     <ng-template #fieldTypeTemplate>

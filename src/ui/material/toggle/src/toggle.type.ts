@@ -12,6 +12,7 @@ export interface FormlyToggleFieldConfig extends FormlyFieldConfig<ToggleProps> 
 }
 
 @Component({
+  standalone: false,
   selector: 'formly-field-mat-toggle',
   template: `
     <mat-slide-toggle

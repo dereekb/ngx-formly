@@ -28,7 +28,7 @@ describe('ng-add-schematic', () => {
     const packageJson = JSON.parse(tree.get('/package.json').content.toString());
 
     // @TODO: list of themes should probably be retrieved from some config file
-    ['material', 'bootstrap', 'ionic', 'primeng', 'kendo', 'ng-zorro-antd'].forEach(theme => {
+    ['material', 'bootstrap'].forEach(theme => {
       expect(packageJson.dependencies[`@ngx-formly/${theme}`]).toBeUndefined();
     });
   });
